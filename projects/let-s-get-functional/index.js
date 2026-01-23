@@ -2,9 +2,38 @@
 
 'use strict';
 
-var maleCount;
+// I: function takes an array
+// O: function returns number of male customers
+// int array to hold male customers
+// access array for key "gender" in each object with a value "male"
+// return number of male customers 
+// how will we keep track of male customers?
 
-var femaleCount;
+var maleCount =  function(array) {
+// init array to hold male customers
+    const output = [];
+// create for loop to access all customers
+for (let i = 0; i < array.length; i++) {
+// access current customer's gender key
+    if (array[i].gender === 'male') {
+        output.push(array[i]);
+    }
+}
+return output.length;
+};
+
+var femaleCount = function(array) {
+    // init array to hold female customers
+        const output = [];
+    // create for loop to access all customers
+    for (let i = 0; i < array.length; i++) {
+    // access current customer's gender key
+        if (array[i].gender === 'female') {
+            output.push(array[i]);
+        }
+    }
+    return output.length;
+    };;
 
 var oldestCustomer;
   
