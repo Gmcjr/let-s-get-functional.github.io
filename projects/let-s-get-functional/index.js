@@ -35,9 +35,36 @@ var femaleCount = function(array) {
     return output.length;
     };;
 
-var oldestCustomer;
+// oldestCustomer is a function that will take in an array of objects
+var oldestCustomer = function(array){
+    // create variable for first object in array
+    let oldest = array[0];
+    // for loop to iterate over array and access the age property of each object
+    for (let i = 0; i < array.length; i ++) {
+        // if current object age is greater than oldest age
+        if (array[i].age > oldest.age) {
+        // reassign current object to oldest
+            oldest = array[i];
+        }
+    }
+        // return oldest name only
+    return oldest.name;
+};
   
-var youngestCustomer;
+var youngestCustomer = function(array){
+    // create variable for first object in array
+    let youngest = array[0];
+    // for loop to iterate over array and access the age property of each object
+    for (let i = 0; i < array.length; i ++) {
+        // if current object age is less than oldest age
+        if (array[i].age < youngest.age) {
+        // reassign current object to youngest
+            youngest = array[i];
+        }
+    }
+        // return youngest name only
+    return youngest.name;
+};;
 
 var averageBalance;
 
