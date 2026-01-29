@@ -66,7 +66,17 @@ var youngestCustomer = function(array){
     return youngest.name;
 };;
 
-var averageBalance;
+var averageBalance = function(array) {
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        let balance = array[i].balance;
+        if (typeof balance === 'string') {
+            balance = balance.replace(/[$,]/g, ''); // strip $ and commas
+        }
+        sum += Number(balance);
+    }
+    return sum / array.length;
+};
 
 var firstLetterCount;
 
