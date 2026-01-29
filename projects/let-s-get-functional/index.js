@@ -71,18 +71,66 @@ var averageBalance = function(array) {
     for (let i = 0; i < array.length; i++) {
         let balance = array[i].balance;
         if (typeof balance === 'string') {
-            balance = balance.replace(/[$,]/g, ''); // strip $ and commas
+            balance = balance.replace(/[$,]/g, '');
         }
         sum += Number(balance);
     }
     return sum / array.length;
 };
 
-var firstLetterCount;
+// it appears that this function should take in an array and a single charactar
+// it should return the number of customers who have names starting with the single character
+// should be case insensitive
+var firstLetterCount = function(array, char){
+    // create a running count for names starting with character
+    let count = 0;
+    // enforce uppercase for case insensitivity
+    char = char.toUpperCase();
+    
+    // for loop to iterate over array, enforce uppercase on first letter of name
+    // and compare first letter with character, updating the count if they match
+    for (let i = 0; i < array.length; i++) {
+        let firstLetter = array[i].name.charAt(0).toUpperCase();
+        if (firstLetter === char) {
+            count++;
+        }
+    }
+    
+    return count;
+};
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, char){
+    let count = 0;
+    char = char.toUpperCase();
 
-var friendsCount;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name === customer) {
+            for (let j = 0; j < array[i].friends.length; j++) {    
+                let firstLetter = array[i].friends[j].name.charAt(0).toUpperCase();
+                if (firstLetter === char) {
+                    count++;
+                }
+            }
+            break;
+        }
+    }    
+        return count;
+    };
+
+    var friendsCount = function(array, string) {
+        return array
+            .filter(function(customer) {
+                for (let i = 0; i < customer.friends.length; i++) {
+                    if (customer.friends[i].name === string) {
+                        return true;
+                    }
+                }
+                return false;
+            })
+            .map(function(customer) {
+                return customer.name;
+            });
+    };
 
 var topThreeTags;
 
