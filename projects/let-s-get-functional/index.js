@@ -78,7 +78,7 @@ var averageBalance = function(array) {
     return sum / array.length;
 };
 
-// it appears that this function should take in an array and a single charactar
+// this function should take in an array and a single charactar
 // it should return the number of customers who have names starting with the single character
 // should be case insensitive
 var firstLetterCount = function(array, char){
@@ -132,9 +132,61 @@ var friendFirstLetterCount = function(array, customer, char){
             });
     };
 
-var topThreeTags;
 
-var genderCount;
+    // function takes in an array
+    // function returns an array of the three most common tags among students
+
+    var topThreeTags = function(array) {
+
+        var tagCount = {};
+        
+        for (var i = 0; i < array.length; i++) {
+          var student = array[i];
+          
+          for (var j = 0; j < student.tags.length; j++) {
+            var tag = student.tags[j];
+            
+            if (tagCount[tag]) {
+              tagCount[tag]++;
+            } else {
+              tagCount[tag] = 1;
+            }
+          }
+        }
+        
+        var tagArray = [];
+        for (var tag in tagCount) {
+          tagArray.push([tag, tagCount[tag]]);
+        }
+        
+        tagArray.sort(function(a, b) {
+          return b[1] - a[1];
+        });
+        
+        var topThree = [];
+        for (var i = 0; i < 3 && i < tagArray.length; i++) {
+          topThree.push(tagArray[i][0]);
+        }
+        
+        return topThree;
+      };
+
+
+      // function takes in an array
+      // function returns an object
+      // function uses reduce() method
+      
+      var genderCount = function(array) {
+        let result = array.reduce(function(accumulator, student) {
+            if (accumulator[student.gender]) {
+                accumulator[student.gender]++;
+            } else {
+                accumulator[student.gender] = 1;
+            }
+            return accumulator;
+        }, {});
+        return result;
+    };
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
